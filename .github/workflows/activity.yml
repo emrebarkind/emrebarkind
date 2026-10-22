@@ -35,13 +35,16 @@ jobs:
 
       - name: Render card
         working-directory: activity
+        # Optional secret: a token of the profile owner, so private contributions count too.
+        env:
+          GH_CONTRIB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN }}
         run: npm run render
 
       - name: Commit if changed
         run: |
-          git diff --quiet -- assets/activity.png && exit 0
+          git add assets/activity-light.png assets/activity-dark.png
+          git diff --cached --quiet && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add assets/activity.png
           git commit -m "Refresh activity card"
           git push

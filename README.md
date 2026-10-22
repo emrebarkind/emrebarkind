@@ -10,7 +10,10 @@ I take one problem from the first conversation to a product people use, and I de
 
 <br>
 
-<img src="assets/activity.png" alt="GitHub contributions over the last twelve months" width="100%">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.png">
+  <img alt="GitHub contributions over the last year" src="assets/activity-light.png" width="100%">
+</picture>
 
 <br>
 

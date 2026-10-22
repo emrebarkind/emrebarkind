@@ -2,14 +2,32 @@
 @import "@fontsource-variable/inter";
 
 @theme {
-  --color-foreground: #0a0a0a;
-  --color-background: #ffffff;
-  /* Runde is not bundled; Inter stands in so CI renders the same everywhere. */
-  --font-runde: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* The tokens the grid reads: black and white, with the lime living in the cells. */
+:root {
+  --foreground: #0a0a0a;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --muted: #f4f4f5;
+  --card: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #fafafa;
+    --muted-foreground: #a3a3a3;
+    --border: #262626;
+    --muted: #18181b;
+    --card: #0a0a0a;
+  }
 }
 
 html,
 body {
   margin: 0;
   background: transparent;
+  font-family: var(--font-sans);
 }
