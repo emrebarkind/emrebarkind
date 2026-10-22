@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --color-foreground: #0a0a0a;
+  --color-background: #ffffff;
+  /* Runde is not bundled; Inter stands in so CI renders the same everywhere. */
+  --font-runde: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  background: transparent;
+}

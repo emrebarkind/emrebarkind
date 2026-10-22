@@ -10,6 +10,10 @@ I take one problem from the first conversation to a product people use, and I de
 
 <br>
 
+<img src="assets/activity.png" alt="GitHub contributions over the last twelve months" width="100%">
+
+<br>
+
 ## Now building · [Klinia](https://klinia-ai.vercel.app)
 
 One AI team for the dental practice.

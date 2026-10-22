@@ -1,0 +1,47 @@
+name: Refresh activity card
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["activity/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: activity-card
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: activity/package-lock.json
+
+      - name: Install
+        working-directory: activity
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Render card
+        working-directory: activity
+        run: npm run render
+
+      - name: Commit if changed
+        run: |
+          git diff --quiet -- assets/activity.png && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add assets/activity.png
+          git commit -m "Refresh activity card"
+          git push
