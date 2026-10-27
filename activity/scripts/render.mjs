@@ -58,7 +58,11 @@ async function withRetry(load, attempts = 3) {
 }
 
 const token = process.env.GH_CONTRIB_TOKEN;
-const days = await withRetry(() => (token ? fromGraphQL(token) : fromPublicCalendar()));
+const days = await withRetry(() => (token ? fromGraphQL(token) : fromPublicCalendar())).catch((error) => {
+  if (!token) throw error;
+  console.warn(`GraphQL failed (${error.message}), falling back to the public calendar`);
+  return withRetry(fromPublicCalendar);
+});
 const total = days.reduce((sum, day) => sum + day.count, 0);
 console.log(`${token ? "graphql" : "public calendar"}: ${total} contributions, ${days.length} days`);
 

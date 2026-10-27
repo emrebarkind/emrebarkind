@@ -35,9 +35,10 @@ jobs:
 
       - name: Render card
         working-directory: activity
-        # Optional secret: a token of the profile owner, so private contributions count too.
+        # GraphQL straight from GitHub: the calendar the profile shows, private contributions
+        # included once the profile shares them. An owner token in GH_CONTRIB_TOKEN wins if set.
         env:
-          GH_CONTRIB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN }}
+          GH_CONTRIB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN || github.token }}
         run: npm run render
 
       - name: Commit if changed
