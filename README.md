@@ -2,7 +2,7 @@
 
 <p align="center">I take an idea from the first conversation to a product people use.</p>
 
-<p align="center"><sub>TypeScript · React · Next.js · Tailwind · Python · FastAPI · PostgreSQL · Supabase · Vercel · LLM and speech APIs</sub></p>
+<p align="center"><sub>TypeScript · React · Next.js · Tailwind · Python · FastAPI · PostgreSQL · </sub></p>
 
 <br>
 
