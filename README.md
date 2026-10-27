@@ -1,9 +1,15 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-  <img alt="0 to 1 builder" src="assets/banner-light.svg" width="100%">
-</picture>
+<h1 align="center">0 → 1 builder</h1>
 
 <p align="center">I take an idea from the first conversation to a product people use.</p>
+
+<p align="center"><sub>TypeScript · React · Next.js · Tailwind · Python · FastAPI · PostgreSQL · Supabase · Vercel · LLM and speech APIs</sub></p>
+
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.png">
+  <img alt="GitHub contributions over the last year" src="assets/activity-light.png" width="100%">
+</picture>
 
 <br>
 
@@ -13,10 +19,3 @@
 
 <a href="https://klinia-ai.vercel.app"><img src="assets/klinia.webp" alt="Klinia Voice: dental chart and exam note drafted from speech" width="100%"></a>
 <sub>Sample exam, synthetic patient data.</sub>
-
-<br>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.png">
-  <img alt="GitHub contributions over the last year" src="assets/activity-light.png" width="100%">
-</picture>
