@@ -122,6 +122,9 @@ export function GitHubActivityGrid({
       if (!firstReal) return;
       const m = new Date(firstReal.date + "T00:00:00").getMonth();
       if (m !== lastMonth) {
+        // a month that only got a column or two would print under the next label
+        const prev = monthLabels.at(-1);
+        if (prev && col - prev.col < 3) monthLabels.pop();
         monthLabels.push({ col, label: MONTHS[m] });
         lastMonth = m;
       }

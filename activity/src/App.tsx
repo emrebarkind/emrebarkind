@@ -13,7 +13,7 @@ export default function App() {
   }, [days]);
 
   return (
-    <main id="card" className="w-[820px] p-6">
+    <main id="card" className="w-[840px] px-1 pt-1 pb-4">
       {days && <GitHubActivityGrid days={days} cellSize={12} cellGap={3} />}
     </main>
   );

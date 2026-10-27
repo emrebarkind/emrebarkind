@@ -44,8 +44,21 @@ async function fromPublicCalendar() {
   return body.contributions.map(({ date, count }) => ({ date, count }));
 }
 
+// the public calendar API drops a connection now and then
+async function withRetry(load, attempts = 3) {
+  for (let i = 1; ; i++) {
+    try {
+      return await load();
+    } catch (error) {
+      if (i >= attempts) throw error;
+      console.warn(`attempt ${i} failed (${error.message}), retrying`);
+      await new Promise((resolve) => setTimeout(resolve, 5_000 * i));
+    }
+  }
+}
+
 const token = process.env.GH_CONTRIB_TOKEN;
-const days = token ? await fromGraphQL(token) : await fromPublicCalendar();
+const days = await withRetry(() => (token ? fromGraphQL(token) : fromPublicCalendar()));
 const total = days.reduce((sum, day) => sum + day.count, 0);
 console.log(`${token ? "graphql" : "public calendar"}: ${total} contributions, ${days.length} days`);
 
